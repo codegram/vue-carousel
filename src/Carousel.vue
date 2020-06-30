@@ -98,7 +98,7 @@ export default {
       dragOffset: 0,
       dragStartY: 0,
       dragStartX: 0,
-      isTouch: typeof window !== "undefined" && "ontouchstart" in window,
+      isTouch: false,
       offset: 0,
       refreshRate: 16,
       slideCount: 0,
@@ -917,6 +917,8 @@ export default {
     }
   },
   mounted() {
+    this.isTouch = typeof window !== "undefined" && "ontouchstart" in window;
+  
     window.addEventListener(
       "resize",
       debounce(this.onResize, this.refreshRate)
